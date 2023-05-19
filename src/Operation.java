@@ -1,5 +1,4 @@
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class Operation implements Comparable<Operation> {
@@ -37,6 +36,12 @@ public class Operation implements Comparable<Operation> {
             return 0;
         }
     }
+    public int compareToByBurstTime(Operation other){
+        if (burst_time < other.burst_time){
+            return -1;
+        } else if (priority > other.burst_time) {
+            return 1;
+        } else {return 0;}}
 
     public int compareToByDate(Operation other) {
         return  arrival_date.compareTo(other.arrival_date);

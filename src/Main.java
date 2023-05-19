@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         Task_Manager taskManager = new Task_Manager();
 
-        try (BufferedReader br = new BufferedReader(new FileReader("task.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("tasks.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] operation = line.split(",");
@@ -14,9 +14,10 @@ public class Main {
                 int burst_time = Integer.parseInt(operation[1]);
                 String arrival_date = operation[2];
                 String arrival_time = operation[3];
-                Operation task = new Operation(task_type,burst_time,arrival_date,arrival_time);
+                taskManager.firstAdd(task_type,burst_time,arrival_date,arrival_time);
         } }catch (IOException e) {
             e.printStackTrace();
         }
+        taskManager.display();
     }
 }
