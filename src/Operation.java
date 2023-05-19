@@ -6,7 +6,7 @@ public class Operation implements Comparable<Operation> {
     int priority;
     Operation next;
 
-    public Operation(int data, int priority) {
+    public Operation(int data, int priority, String task_type, String arrival_date) {
         this.burst_time = burst_time;
         this.priority = priority;
         this.arrival_date = arrival_date;
@@ -27,4 +27,9 @@ public class Operation implements Comparable<Operation> {
             return 0;
         }
     }
+
+    public Operation getNextNode() {
+        return next;
+    }
 }
+
