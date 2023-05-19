@@ -28,7 +28,7 @@ public class Operation implements Comparable<Operation> {
         }
     }
 
-    public Operation getNextNode() {
+    public Operation getNext() {
         return next;
     }
 }
