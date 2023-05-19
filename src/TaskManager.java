@@ -1,4 +1,4 @@
-public class Task_Manager<Operation> implements PriorityQueue<Operation>{
+public class Task_Manager<T> implements PriorityQueue<Operation>{
     private Operation firstNode;
     private Operation lastNode;
     private int numberOfEntries = 0;
@@ -7,10 +7,11 @@ public class Task_Manager<Operation> implements PriorityQueue<Operation>{
         firstNode = null;
 
     }
-    public void add(Operation operation,int priority){
+    public void add(String task_type,int burst_time,String arrival_date,String arrival_time,int priority){
+        Operation operation = new Operation(task_type,burst_time,arrival_date,arrival_time);
         if (isEmpty() || priority < firstNode.priority) {
             operation.next = firstNode;
-            front = operation;
+            firstNode = operation;
         } else {
             Operation temp = firstNode;
 
@@ -20,8 +21,8 @@ public class Task_Manager<Operation> implements PriorityQueue<Operation>{
             }
 
             // Insert the new node at the appropriate position
-            newNode.next = temp.next;
-            temp.next = newNode;
+            operation.next = temp.next;
+            temp.next = operation;
         }
     }
     public Operation peek(){
