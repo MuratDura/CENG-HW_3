@@ -4,7 +4,7 @@ import java.io.FileReader;
 import java.io.IOException;
 public class Main {
     public static void main(String[] args) {
-        Task_Manager<Operation> taskManager = new Task_Manager<>();
+        Task_Manager taskManager = new Task_Manager();
 
         try (BufferedReader br = new BufferedReader(new FileReader("task.txt"))) {
             String line;

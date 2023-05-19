@@ -1,4 +1,4 @@
-public class Task_Manager<T> implements PriorityQueue<Operation>{
+public class Task_Manager implements PriorityQueue<Operation>{
     private Operation firstNode;
     private Operation lastNode;
     private int numberOfEntries = 0;
@@ -27,18 +27,18 @@ public class Task_Manager<T> implements PriorityQueue<Operation>{
     }
     public Operation peek(){
         if (isEmpty())
-            throw new EmptyQueueException();
-        else return firstNode.getData();
+            throw new RuntimeException("Priority queue is empty");
+        else return firstNode;
     }
     public Operation remove(){
-        Operation front = peek();
-        assert firstNode !=null;
-        firstNode.setData(null);
-        firstNode = firstNode.getNextNode();
-        if (firstNode == null)
-            lastNode = null;
-        numberOfEntries--;
-        return front;
+            if (isEmpty()) {
+                throw new RuntimeException("Priority queue is empty");
+            }
+
+            Operation removedItem = firstNode;
+            firstNode = firstNode.next;
+            return removedItem;
+
     }
     public boolean isEmpty(){
         return (firstNode == null) && (lastNode == null);
@@ -51,17 +51,17 @@ public class Task_Manager<T> implements PriorityQueue<Operation>{
     public int getSize(){
         return numberOfEntries;
     }
-    public Operation[] toArray(){
-        @SuppressWarnings("unchecked")
-        Operation[] result = (Operation[]) new Object[numberOfEntries];
-        int index = 0;
-        Operation currentNode = firstNode;
-        while ((index<numberOfEntries)&&(currentNode != null)){
-            result[index] = currentNode.getData();
-            currentNode = currentNode.getNextNode();
-            index++;
+    public void display() {
+        if (isEmpty()) {
+            System.out.println("Priority queue is empty");
+            return;
         }
-        return result;
+
+        Operation temp = firstNode;
+        while (temp != null) {
+            System.out.println("Data: " + temp.getData() + ", Priority: " + temp.priority);
+            temp = temp.next;
+        }
     }
 }
 
