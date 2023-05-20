@@ -36,6 +36,7 @@ public class Task_Manager implements PriorityQueue<Operation>{
     }
     @Override
     public void add(String task_type,int burst_time,String arrival_date,String arrival_time){
+        numberOfEntries++;
         Operation operation = new Operation(task_type,burst_time,arrival_date,arrival_time);
         int priority = operation.getPriority();
         if (isEmpty() || priority > firstNode.priority) {

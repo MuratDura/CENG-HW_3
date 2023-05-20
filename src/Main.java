@@ -24,6 +24,7 @@ public class Main {
         taskManager.display();
         System.out.println(taskManager.getSize());
         System.out.println("***********************************************");
+        System.out.println("WAITING LINE:");
         Task_Manager WaitingList = new Task_Manager();
         while (!taskManager.isEmpty()){
             Operation temp = taskManager.remove();
@@ -31,5 +32,12 @@ public class Main {
         }
         WaitingList.display();
         System.out.println(WaitingList.getSize());
+        while (!WaitingList.isEmpty()){
+            for (int i=0;i<5;i++){
+                Operation op = WaitingList.remove();
+            }
+            System.out.println("Kalan operasyonlar");
+            WaitingList.display();
+        }
     }
 }
