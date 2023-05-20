@@ -2,6 +2,9 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.text.SimpleDateFormat;
+
 public class Main {
     public static void main(String[] args) {
         Task_Manager taskManager = new Task_Manager();
@@ -19,5 +22,14 @@ public class Main {
             e.printStackTrace();
         }
         taskManager.display();
+        System.out.println(taskManager.getSize());
+        System.out.println("***********************************************");
+        Task_Manager WaitingList = new Task_Manager();
+        while (!taskManager.isEmpty()){
+            Operation temp = taskManager.remove();
+            WaitingList.add(temp.task_type,temp.burst_time, temp.strArrivalDate, temp.arrival_time.toString());
+        }
+        WaitingList.display();
+        System.out.println(WaitingList.getSize());
     }
 }

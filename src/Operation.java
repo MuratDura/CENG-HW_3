@@ -6,13 +6,15 @@ public class Operation implements Comparable<Operation> {
     LocalDate arrival_date;
     LocalTime arrival_time;
     String task_type;
-    int priority;
+    int priority = 0;
     Operation next;
+    String strArrivalDate;
 
     public Operation(String task_type,int burst_time,String arrival_date,String arrival_time) {
         LocalTime time = LocalTime.parse(arrival_time);
         this.burst_time = burst_time;
         this.task_type = task_type;
+        this.strArrivalDate = arrival_date;
         this.next = null;
         this.arrival_time = time;
         String[] operation = arrival_date.split("/");
