@@ -2,8 +2,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.text.SimpleDateFormat;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -21,7 +20,7 @@ public class Main {
         } }catch (IOException e) {
             e.printStackTrace();
         }
-        taskManager.display();
+        taskManager.showOperation();
         System.out.println(taskManager.getSize());
         System.out.println("***********************************************");
         System.out.println("WAITING LINE:");

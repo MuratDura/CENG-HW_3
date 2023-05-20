@@ -119,5 +119,16 @@ public class Task_Manager implements PriorityQueue<Operation>{
         }
         return result;
     }
-}
+    public void showOperation(){
+        if (isEmpty()) {
+            System.out.println("Priority queue is empty");
+            return;
+        }
 
+        Operation temp = firstNode;
+        while (temp != null) {
+            System.out.println("Task type: " + temp.task_type+" Burst time: "+temp.burst_time+" Arrival time: "+temp.arrival_time);
+            temp = temp.next;
+        }
+        }
+    }
